@@ -29,19 +29,3 @@ def print_binary_tree(node, level=0, right=None):
         if node.left is not None:
             print_binary_tree(node.left, level + 1, right=False)
 
-
-def main():
-
-    root = binary_tree_node(5, None)
-
-    root.left = binary_tree_node(34, root)
-    root.left.left = binary_tree_node(3, root.left)
-    root.left.right = binary_tree_node(56, root.left)
-    root.right = binary_tree_node(9, root)
-    root.right.left = binary_tree_node(20, root.right)
-    root.right.right = binary_tree_node(8, root.right)
-
-    print_binary_tree(root)
-
-if __name__ == "__main__":
-    main()
