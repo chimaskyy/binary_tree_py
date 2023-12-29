@@ -64,6 +64,15 @@ class Node:
         else:
             return False
 
+    def is_root(self, node):
+        if node is None:
+            return False
+
+        if node.left is not None and node.right is not None:
+            return True
+        else:
+            return False
+
 
 def preOrder(root):
     if root is None:
@@ -114,5 +123,5 @@ print()
 inOrder(root)
 print()
 
-ret = root.node_is_leaf(root.right)
-print("is node {} leaf: {}".format(root.right.value, ret))
+ret = root.is_root(root.left)
+print("is node {} root: {}".format(root.left.value, ret))
