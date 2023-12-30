@@ -73,6 +73,23 @@ class Node:
         else:
             return False
 
+    def tree_height(self, root):
+        if root is None:
+            return
+        if root.left is not None:
+            left_h = 1 + self.tree_height(root.left)
+        else:
+            left_h = 0
+        if root.right is not None:
+            right_h = 1 + self.tree_height(root.right)
+        else:
+            right_h = 0
+
+        if left_h > right_h:
+            return left_h
+        else:
+            return right_h
+
 
 def preOrder(root):
     if root is None:
@@ -107,13 +124,13 @@ root.insert(7)
 root.insert(2)
 root.insert(4)
 root.add_Left(34, root)
-root.add_Left(23, root.right)
+"""root.add_Left(23, root.right)
 root.add_Left(9, root.right)
 root.add_Right(20, root)
 root.add_Right(78, root.right)
 root.add_Right(43, root.right)
 # root.del_tree(root)
-# root = None
+# root = None"""
 
 
 preOrder(root)
@@ -125,3 +142,6 @@ print()
 
 ret = root.is_root(root.left)
 print("is node {} root: {}".format(root.left.value, ret))
+
+height = root.tree_height(root)
+print(height)
