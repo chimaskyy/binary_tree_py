@@ -11,6 +11,8 @@ class binaryTree_insert(binaryTree):
 
 
 def tree_height(parent):
+    """length of the longest path from the
+    parent node to a leaf node"""
     if parent is None:
         return
 
@@ -26,5 +28,4 @@ def tree_height(parent):
 
     if left_h > right_h:
         return left_h
-    else:
-        return right_h
+    return right_h
