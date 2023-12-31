@@ -108,6 +108,40 @@ class Node:
 
         return left + right
 
+    def one_child(self, node):
+        if node is None:
+            return
+        if node.left is None and node.right is None:
+            return 0
+        left = self.one_child(node.left)
+        right = self.one_child(node.right)
+
+        return left + right + 1
+
+    def balance_factor(self, root):
+        if root is None:
+            return
+        if root.left is None:
+            left = -1
+        else:
+            left = self.tree_height(root.left)
+
+        if root.right is None:
+            right = -1
+        else:
+            right = self.tree_height(root.right)
+
+        return left - right
+
+    def tree_is_full(self, node):
+        if node is None:
+            return 0
+        if node.left is None and node.right is None:
+            return 1
+        if node.left is not None and node.right is not None:
+            return self.tree_is_full(node.left) and self.tree_is_full(node.right)
+        return 0
+
 
 def preOrder(root):
     if root is None:
@@ -141,6 +175,9 @@ root.insert(3)
 root.insert(7)
 root.insert(2)
 root.insert(4)
+root.insert(9)
+root.insert(6)
+
 # root.add_Left(34, root)
 """root.add_Left(23, root.right)
 root.add_Left(9, root.right)
@@ -165,5 +202,12 @@ height = root.tree_height(root.left)
 print(height)
 size = root.tree_size(root.left)
 print(size)
-n_leaf = root.tree_leaves(root)
-print(n_leaf)
+# n_leaf = root.tree_leaves(root)
+# print(n_leaf)
+node = root.one_child(root.left.left)
+print(node)
+balance = root.balance_factor(root)
+print(balance)
+
+full = root.tree_is_full(root)
+print(full)
